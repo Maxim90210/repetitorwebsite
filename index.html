@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Repetitor Website</title>
+
+    <!-- стилі -->
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+        color: #fff;
+        font-size: 16px;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      .wrapper {
+        background: linear-gradient(
+          90deg,
+          rgba(0, 3, 82, 1) 0%,
+          rgba(3, 0, 171, 1) 35%,
+          rgba(255, 229, 0, 1) 65%
+        );
+        width: 100%;
+      }
+
+      .container {
+        width: 1400px;
+        margin: 0 auto;
+      }
+
+      header {
+        padding: 20px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      header .logo img {
+        height: 50px;
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+      }
+
+      nav ul li a {
+        color: #fff;
+      }
+
+      nav ul li.active::after {
+        content: "";
+        display: block;
+        width: 40px;
+        height: 5px;
+        background: #1100ff;
+        border-radius: 10px;
+        margin: 5px auto 0;
+      }
+
+      nav ul li:not(.active):not(.btn) a:hover {
+        border-bottom: 3px solid #1100ff;
+      }
+
+      nav ul li.btn a {
+        background: #0300ab;
+        padding: 9px 17px;
+        border-radius: 5px;
+        transition: all 500ms ease;
+      }
+
+      nav ul li.btn a:hover {
+        background: #1100ff;
+      }
+
+      /* --- бургер-меню --- */
+      .burger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+      }
+
+      .burger div {
+        width: 25px;
+        height: 3px;
+        background: #fff;
+        border-radius: 2px;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          width: 100%;
+          padding: 0 15px;
+        }
+
+        nav ul {
+          display: none;
+          flex-direction: column;
+          position: absolute;
+          top: 70px;
+          right: 20px;
+          background: rgba(0, 0, 0, 0.9);
+          padding: 20px;
+          border-radius: 8px;
+          gap: 15px;
+        }
+
+        nav ul.show {
+          display: flex;
+        }
+
+        .burger {
+          display: flex;
+        }
+      }
+
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .hero--info {
+        max-width: 600px;
+        padding: 20px;
+      }
+
+      .hero--info h2 {
+        color: #fff200;
+        font-size: 30px;
+        font-weight: 600;
+      }
+
+      .hero--info h1 {
+        font-size: 50px;
+        font-weight: 600;
+      }
+
+      .hero--info p {
+        font-weight: 500;
+        font-weight: 600;
+        margin: 30px 0;
+      }
+
+      .hero--info .btn {
+        background: #fff;
+        color: #000000;
+        border-radius: 50px;
+        padding: 15px 30px;
+        border: 0;
+        transition: all 500 ease;
+      }
+
+      .hero--info .btn:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+      }
+
+      .hero img {
+        max-width: 400px;
+        height: auto;
+        position: static;
+      }
+
+      @media (max-width: 768px) {
+        .hero {
+          flex-direction: column;
+          text-align: center;
+          padding: 40px 0;
+        }
+
+        .hero img {
+          max-width: 80%;
+          margin-top: 20px;
+        }
+
+        .hero--info h1 {
+          font-size: 32px;
+        }
+
+        .hero--info h2 {
+          font-size: 22px;
+        }
+      }
+
+      /* модальне вікно */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        justify-content: center;
+        align-items: center;
+      }
+
+      .modal-content {
+        background: white;
+        color: black;
+        padding: 20px;
+        border-radius: 8px;
+        width: 300px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .modal-content input {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      .modal-content button {
+        width: 100%;
+        padding: 12px;
+        background: #282ca7;
+        color: white;
+        font-size: 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .modal-content button:hover {
+        background: #242188;
+      }
+
+      .close {
+        float: right;
+        font-size: 20px;
+        cursor: pointer;
+      }
+
+      .btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      .btn-white {
+        background: white;
+        color: black;
+      }
+
+      .btn-blue {
+        background: #002f9d;
+        color: white;
+      }
+
+      .contact-btn {
+        display: inline-block;
+        background: #0300ab;
+        color: #fff;
+        padding: 12px 20px;
+        margin: 5px 0;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: transform 0.3s;
+      }
+
+      .contact-btn:hover {
+        transform: scale(1.1);
+        background: #1100ff;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <header class="container">
+        <span class="logo"><img src=".img/Дизайн без назви.png" alt=""></span>
+        <nav>
+          <ul id="nav-links">
+            <li class="active"><a href="#">Головна сторінка</a></li>
+            <li><a href="#info">Про мене</a></li>
+            <li><a href="#contacts">Контакти</a></li>
+            <li class="btn"><a href="#" id="openModal">Консультація</a></li>
+          </ul>
+        </nav>
+        <div class="burger" id="burger">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </header>
+
+      <div class="hero container">
+        <div class="hero--info">
+          <h2>Українська - це круто!</h2>
+          <h1>Репетитор з української мови</h1>
+          <p>Солоп Катерина</p>
+          <button class="btn" id="openModal2">
+            Записатися на консультацію
+          </button>
+        </div>
+        <img src=".img/86ed99e3-18bd-494b-8299-3b96311c8ade_20250813_191854_0000.png" alt="" />
+      </div>
+
+      <!-- Секція Інформація -->
+      <div class="container trending info-section" id="info">
+        <h3>Інформація</h3>
+
+        <div class="info-block">
+          <p>👋 Привіт! Мене звати <strong>Катерина</strong>.  
+          Я викладаю українську мову вже понад <b>15 років</b> і щиро люблю свою справу.  
+          Маю вищу освіту <b>ОНУ ім. І. Мечникова</b> та великий досвід підготовки школярів до важливих іспитів та конкурсів.</p>
+        </div>
+
+        <div class="info-block">
+          <p>📘 Я працюю з учнями різного віку та рівня підготовки. Разом ми зможемо:</p>
+          <ul>
+            <li>🎯 якісно підготуватися до <b>ЗНО / НМТ</b>;</li>
+            <li>📖 впевнено опанувати програму з української мови;</li>
+            <li>🏆 здобути перемоги на олімпіадах та конкурсах;</li>
+            <li>✍️ прокачати грамотність, письмо та мовлення.</li>
+          </ul>
+        </div>
+
+        <div class="info-block">
+          <p>💻 Заняття можливі онлайн (<b>Zoom, Google Meet, Skype</b>) у зручному форматі з будь-якої точки світу.  
+          📍 Або офлайн в Одесі для тих, хто любить живе спілкування.</p>
+        </div>
+
+        <div class="info-block">
+          <p>✨ Чому варто обрати мене:</p>
+          <ul>
+            <li>15 років педагогічного досвіду;</li>
+            <li>Авторські матеріали та сучасні методики;</li>
+            <li>Індивідуальний підхід до кожного учня;</li>
+            <li>Результати: високі бали на <b>ЗНО</b> та перемоги на олімпіадах моїх учнів.</li>
+          </ul>
+        </div>
+      </div>
+
+      <style>
+        .info-section {
+          line-height: 1.7;
+          font-size: 18px;
+        }
+
+        .info-block {
+          background: rgba(255,255,255,0.05);
+          padding: 20px;
+          margin: 15px 0;
+          border-radius: 12px;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .info-block ul {
+          margin: 15px 0 0 20px;
+        }
+
+        .info-block li {
+          margin-bottom: 8px;
+        }
+      </style>
+
+      <!-- Секція Контакти -->
+      <div class="container" id="contacts" style="padding:50px 0; text-align:center;">
+        <h3>Контакти</h3>
+        <a class="contact-btn" href="tel:0973621275">📞 Телефон: 0973621275</a><br><br>
+        <a class="contact-btn" href="mailto:kate.poperechna@gmail.com">✉️ Email: kate.poperechna@gmail.com</a><br><br>
+        <a class="contact-btn" href="https://www.tiktok.com/@promovu2020?_t=ZM-8zHc1y3K6NC&_r=1" target="_blank">🎵 TikTok</a>
+      </div>
+    </div>
+
+    <!-- Модальне вікно -->
+    <div id="registerModal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <h2>Консультація</h2>
+        <form id="registerForm">
+          <input type="text" id="name" placeholder="Ваше ім’я" required>
+          <input type="email" id="email" placeholder="Ваш e-mail" required>
+          <input type="tel" id="phone" placeholder="Ваш телефон" required>
+          <button type="submit">Готово</button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      const modal = document.getElementById("registerModal");
+      const openBtn = document.getElementById("openModal");
+      const openBtn2 = document.getElementById("openModal2");
+      const closeBtn = document.getElementById("closeModal");
+
+      openBtn.onclick = () => (modal.style.display = "flex");
+      openBtn2.onclick = () => (modal.style.display = "flex");
+      closeBtn.onclick = () => (modal.style.display = "none");
+      window.onclick = (e) => {
+        if (e.target == modal) modal.style.display = "none";
+      };
+
+      document
+        .getElementById("registerForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const name = document.getElementById("name").value;
+          const email = document.getElementById("email").value;
+          const phone = document.getElementById("phone").value;
+
+          localStorage.setItem("name", name);
+          localStorage.setItem("email", email);
+          localStorage.setItem("phone", phone);
+
+          alert(`Вітаємо, ${name}! Ви зареєстровані.`);
+          modal.style.display = "none";
+        });
+
+      // --- бургер-меню ---
+      const burger = document.getElementById("burger");
+      const navLinks = document.getElementById("nav-links");
+      burger.addEventListener("click", () => {
+        navLinks.classList.toggle("show");
+      });
+    </script>
+  </body>
+</html>
