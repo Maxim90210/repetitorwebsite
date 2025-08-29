@@ -40,8 +40,10 @@
       }
 
       .container {
-        width: 1400px;
+        max-width: 1200px;
+        width: 100%;
         margin: 0 auto;
+        padding: 0 15px;
       }
 
       header {
@@ -103,20 +105,18 @@
       }
 
       .hero {
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        padding-bottom: 100px;
         position: relative;
         z-index: 1;
-        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         flex-wrap: wrap;
-        gap: 20px;
       }
 
       .hero--info {
-        max-width: 600px;
-        padding: 20px;
+        width: 530px;
+        padding-top: 50px;
       }
 
       .hero--info h2 {
@@ -131,7 +131,6 @@
       }
 
       .hero--info p {
-        font-weight: 500;
         font-weight: 600;
         margin: 30px 0;
       }
@@ -151,36 +150,9 @@
       }
 
       .hero img {
-        max-width: 400px;
-        height: auto;
-        position: static;
-      }
-
-      /* адаптивність */
-      @media (max-width: 768px) {
-        .container {
-          width: 100%;
-          padding: 0 15px;
-        }
-
-        .hero {
-          flex-direction: column;
-          text-align: center;
-          padding: 40px 0;
-        }
-
-        .hero img {
-          max-width: 80%;
-          margin-top: 20px;
-        }
-
-        .hero--info h1 {
-          font-size: 32px;
-        }
-
-        .hero--info h2 {
-          font-size: 22px;
-        }
+        position: absolute;
+        top: -170px;
+        right: 0;
       }
 
       /* модальне вікно */
@@ -253,7 +225,6 @@
         color: white;
       }
 
-      /* games */
       .trending {
         padding-top: 315px;
       }
@@ -319,7 +290,6 @@
         margin-bottom: 30px;
       }
 
-      /* плавна прокрутка */
       html {
         scroll-behavior: smooth;
       }
@@ -339,6 +309,67 @@
       .contact-btn:hover {
         transform: scale(1.1);
         background: #1100ff;
+      }
+
+      /* адаптивність */
+      @media (max-width: 768px) {
+        header nav {
+          width: 100%;
+          float: none;
+        }
+
+        header nav ul {
+          flex-direction: column;
+          align-items: center;
+          gap: 15px;
+        }
+
+        .hero {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .hero img {
+          position: static;
+          width: 80%;
+          margin: 20px auto;
+        }
+
+        .hero--info {
+          width: 100%;
+        }
+
+        .big-text {
+          width: 100%;
+          font-size: 24px;
+        }
+
+        .banner p {
+          width: 100%;
+        }
+      }
+
+      @media (max-width: 480px) {
+        header .logo {
+          font-size: 20px;
+        }
+
+        .hero--info h1 {
+          font-size: 28px;
+        }
+
+        .hero--info h2 {
+          font-size: 20px;
+        }
+
+        .hero--info p {
+          font-size: 16px;
+        }
+
+        .contact-btn {
+          width: 100%;
+          text-align: center;
+        }
       }
     </style>
   </head>
@@ -369,74 +400,72 @@
         <img src=".img/86ed99e3-18bd-494b-8299-3b96311c8ade_20250813_191854_0000.png" alt="" />
       </div>
 
-<!-- Секція Інформація -->
-<div class="container trending info-section" id="info">
-  <h3>Інформація</h3>
+      <!-- Секція Інформація -->
+      <div class="container trending info-section" id="info">
+        <h3>Інформація</h3>
 
-  <div class="info-block">
-    <p>👋 Привіт! Мене звати <strong>Катерина</strong>.  
-    Я викладаю українську мову вже понад <b>15 років</b> і щиро люблю свою справу.  
-    Маю вищу освіту <b>ОНУ ім. І. Мечникова</b> та великий досвід підготовки школярів до важливих іспитів та конкурсів.</p>
-  </div>
+        <div class="info-block">
+          <p>👋 Привіт! Мене звати <strong>Катерина</strong>.  
+          Я викладаю українську мову вже понад <b>15 років</b> і щиро люблю свою справу.  
+          Маю вищу освіту <b>ОНУ ім. І. Мечникова</b> та великий досвід підготовки школярів до важливих іспитів та конкурсів.</p>
+        </div>
 
-  <div class="info-block">
-    <p>📘 Я працюю з учнями різного віку та рівня підготовки. Разом ми зможемо:</p>
-    <ul>
-      <li>🎯 якісно підготуватися до <b>ЗНО / НМТ</b>;</li>
-      <li>📖 впевнено опанувати програму з української мови;</li>
-      <li>🏆 здобути перемоги на олімпіадах та конкурсах;</li>
-      <li>✍️ прокачати грамотність, письмо та мовлення.</li>
-    </ul>
-  </div>
+        <div class="info-block">
+          <p>📘 Я працюю з учнями різного віку та рівня підготовки. Разом ми зможемо:</p>
+          <ul>
+            <li>🎯 якісно підготуватися до <b>ЗНО / НМТ</b>;</li>
+            <li>📖 впевнено опанувати програму з української мови;</li>
+            <li>🏆 здобути перемоги на олімпіадах та конкурсах;</li>
+            <li>✍️ прокачати грамотність, письмо та мовлення.</li>
+          </ul>
+        </div>
 
-  <div class="info-block">
-    <p>💻 Заняття можливі онлайн (<b>Zoom, Google Meet, Skype</b>) у зручному форматі з будь-якої точки світу.  
-    📍 Або офлайн в Одесі для тих, хто любить живе спілкування.</p>
-  </div>
+        <div class="info-block">
+          <p>💻 Заняття можливі онлайн (<b>Zoom, Google Meet, Skype</b>) у зручному форматі з будь-якої точки світу.  
+          📍 Або офлайн в Одесі для тих, хто любить живе спілкування.</p>
+        </div>
 
-  <div class="info-block">
-    <p>✨ Чому варто обрати мене:</p>
-    <ul>
-      <li>15 років педагогічного досвіду;</li>
-      <li>Авторські матеріали та сучасні методики;</li>
-      <li>Індивідуальний підхід до кожного учня;</li>
-      <li>Результати: високі бали на <b>ЗНО</b> та перемоги на олімпіадах моїх учнів.</li>
-    </ul>
-  </div>
-</div>
+        <div class="info-block">
+          <p>✨ Чому варто обрати мене:</p>
+          <ul>
+            <li>15 років педагогічного досвіду;</li>
+            <li>Авторські матеріали та сучасні методики;</li>
+            <li>Індивідуальний підхід до кожного учня;</li>
+            <li>Результати: високі бали на <b>ЗНО</b> та перемоги на олімпіадах моїх учнів.</li>
+          </ul>
+        </div>
+      </div>
 
-<style>
-  .info-section {
-    line-height: 1.7;
-    font-size: 18px;
-  }
+      <style>
+        .info-section {
+          line-height: 1.7;
+          font-size: 18px;
+        }
 
-  .info-block {
-    background: rgba(255,255,255,0.05);
-    padding: 20px;
-    margin: 15px 0;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  }
+        .info-block {
+          background: rgba(255,255,255,0.05);
+          padding: 20px;
+          margin: 15px 0;
+          border-radius: 12px;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
 
-  .info-block ul {
-    margin: 15px 0 0 20px;
-  }
+        .info-block ul {
+          margin: 15px 0 0 20px;
+        }
 
-  .info-block li {
-    margin-bottom: 8px;
-  }
-</style>
-
+        .info-block li {
+          margin-bottom: 8px;
+        }
+      </style>
 
       <!-- Секція Контакти -->
-<div class="container" id="contacts" style="padding:50px 0; text-align:center;">
-  <h3>Контакти</h3>
-  <a class="contact-btn" href="tel:0973621275">📞 Телефон: 0973621275</a><br><br>
-  <a class="contact-btn" href="mailto:kate.poperechna@gmail.com">✉️ Email: kate.poperechna@gmail.com</a><br><br>
-  <a class="contact-btn" href="https://www.tiktok.com/@promovu2020?_t=ZM-8zHc1y3K6NC&_r=1" target="_blank">🎵 TikTok</a>
-</div>
-      
+      <div class="container" id="contacts" style="padding:50px 0; text-align:center;">
+        <h3>Контакти</h3>
+        <a class="contact-btn" href="tel:0973621275">📞 Телефон: 0973621275</a><br><br>
+        <a class="contact-btn" href="mailto:kate.poperechna@gmail.com">✉️ Email: kate.poperechna@gmail.com</a><br><br>
+        <a class="contact-btn" href="https://www.tiktok.com/@promovu2020?_t=ZM-8zHc1y3K6NC&_r=1" target="_blank">🎵 TikTok</a>
+      </div>
     </div>
 
     <!-- Модальне вікно -->
