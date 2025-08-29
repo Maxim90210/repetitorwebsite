@@ -14,19 +14,16 @@
         padding: 0;
       }
 
-      body {
+      body, html {
         font-family: "Poppins", sans-serif;
         font-weight: 400;
         color: #fff;
         font-size: 16px;
+        overflow-x: hidden;
       }
 
       a {
         text-decoration: none;
-      }
-
-      img {
-        max-width: 100%;
       }
 
       .wrapper {
@@ -47,13 +44,14 @@
       }
 
       header {
-        padding: 50px 0;
+        padding: 30px 0;
       }
 
       header .logo {
         text-transform: uppercase;
         font-size: 29px;
         font-weight: 800;
+        color: #fff;
       }
 
       header nav {
@@ -105,18 +103,14 @@
       }
 
       .hero {
-        padding-bottom: 100px;
+        padding: 60px 0;
         position: relative;
         z-index: 1;
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
-      }
-
-      .hero--info {
-        width: 530px;
-        padding-top: 50px;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
       }
 
       .hero--info h2 {
@@ -126,13 +120,14 @@
       }
 
       .hero--info h1 {
-        font-size: 50px;
+        font-size: 42px;
         font-weight: 600;
+        margin-top: 10px;
       }
 
       .hero--info p {
         font-weight: 600;
-        margin: 30px 0;
+        margin: 20px 0;
       }
 
       .hero--info .btn {
@@ -147,12 +142,6 @@
       .hero--info .btn:hover {
         cursor: pointer;
         transform: scale(1.1);
-      }
-
-      .hero img {
-        position: absolute;
-        top: -170px;
-        right: 0;
       }
 
       /* модальне вікно */
@@ -215,18 +204,13 @@
         font-size: 16px;
       }
 
-      .btn-white {
-        background: white;
-        color: black;
-      }
-
       .btn-blue {
         background: #002f9d;
         color: white;
       }
 
       .trending {
-        padding-top: 315px;
+        padding-top: 100px;
       }
 
       .trending h3 {
@@ -234,60 +218,19 @@
         font-size: 31px;
       }
 
-      .trending .see-all {
-        color: #fff;
-        background: #25211d;
-        border-radius: 5px;
-        padding: 12px 23px;
-        float: right;
-        display: block;
-        transition: all 500ms ease;
-      }
-
-      .trending .see-all:hover {
-        transform: scale(1.1);
-      }
-
-      .trending .games {
-        display: flex;
-        justify-content: space-beetween;
-        width: 100%;
-        padding: 50px 0;
-      }
-
-      .trending .games span {
-        display: block;
-        text-align: center;
-        margin-top: 20px;
-      }
-
       .big-text {
         padding: 50px 0;
-        font-size: 35px;
+        font-size: 28px;
         font-weight: 600;
         text-align: center;
-        width: 800px;
-      }
-
-      .banner {
-        padding: 80 px 0;
-      }
-
-      .banner h3 {
-        font-size: 30px;
-        font-weight: 600;
-        margin-bottom: 30px;
+        max-width: 100%;
+        margin: 0 auto;
       }
 
       .banner p {
         line-height: 170%;
         margin-bottom: 30px;
-        width: 550px;
-      }
-
-      .banner img {
         width: 100%;
-        margin-bottom: 30px;
       }
 
       html {
@@ -323,30 +266,6 @@
           align-items: center;
           gap: 15px;
         }
-
-        .hero {
-          flex-direction: column;
-          text-align: center;
-        }
-
-        .hero img {
-          position: static;
-          width: 80%;
-          margin: 20px auto;
-        }
-
-        .hero--info {
-          width: 100%;
-        }
-
-        .big-text {
-          width: 100%;
-          font-size: 24px;
-        }
-
-        .banner p {
-          width: 100%;
-        }
       }
 
       @media (max-width: 480px) {
@@ -377,7 +296,7 @@
   <body>
     <div class="wrapper">
       <header class="container">
-        <span class="logo"><img src=".img/Дизайн без назви.png" alt=""></span>
+        <span class="logo">Репетитор</span>
         <nav>
           <ul>
             <li class="active"><a href="#">Головна сторінка</a></li>
@@ -397,7 +316,6 @@
             Записатися на консультацію
           </button>
         </div>
-        <img src=".img/86ed99e3-18bd-494b-8299-3b96311c8ade_20250813_191854_0000.png" alt="" />
       </div>
 
       <!-- Секція Інформація -->
